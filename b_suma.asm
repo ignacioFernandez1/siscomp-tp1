@@ -8,6 +8,7 @@ segment .data
 
 flag db 0
 binary db "0b", 0
+uno db 1
 
 segment .text
 
@@ -28,13 +29,15 @@ conversion:
     xor eax,eax
     shl ebx, 1     
     jc  bit1
-    cmp flag, 0
+    mov edx, flag
+    cmp edx, 0
     je  skip
     mov eax,0
     call print_int
     jmp skip
 bit1:
-    mov flag, 1
+    mov edx, 1
+    mov [flag], edx
     mov eax,1
     call print_int
 skip :

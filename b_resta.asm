@@ -14,7 +14,7 @@ segment .text
 %define num1 [ebp + 8]
 %define num2  [ebp + 12]
 
-asm_b_suma:
+asm_b_resta:
     enter   0,0 
 
     mov eax, num1
@@ -28,13 +28,15 @@ conversion:
     xor eax,eax
     shl ebx, 1     
     jc  bit1
-    cmp flag, 0
+    mov edx, flag
+    cmp edx, 0
     je  skip
     mov eax,0
     call print_int
     jmp skip
 bit1:
-    mov flag, 1
+    mov edx, 1
+    mov [flag], edx
     mov eax,1
     call print_int
 skip :
@@ -43,3 +45,4 @@ skip :
     call print_nl
     leave
     ret
+    

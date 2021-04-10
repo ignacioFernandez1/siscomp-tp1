@@ -6,6 +6,9 @@
 #include "cdecl.h"
 
 void PRE_CDECL asm_suma(long n1, long n2) POST_CDECL;
+void PRE_CDECL asm_b_suma(long n1, long n2) POST_CDECL;
+void PRE_CDECL asm_resta(long n1, long n2) POST_CDECL;
+void PRE_CDECL asm_b_resta(long n1, long n2) POST_CDECL;
 
 int main(int argc, char *argv[])
 {
@@ -25,7 +28,8 @@ int main(int argc, char *argv[])
             fprintf(stderr, "Usage: %s number +/- number (number puede ser decimal o binario)", argv[0]);
             exit(EXIT_FAILURE);
         }
-        else flag_resta = 1;
+        else
+            flag_resta = 1;
     }
 
     if (argv[1][0] == 'b')
@@ -69,9 +73,9 @@ int main(int argc, char *argv[])
 
     if (flagb)
     {
-        if(flag_resta)
+        if (flag_resta)
         {
-            asm_b_resta(n1, n2);
+            //asm_b_resta(n1, n2);
         }
         else
         {
@@ -80,16 +84,15 @@ int main(int argc, char *argv[])
     }
     else
     {
-        if(flag_resta)
+        if (flag_resta)
         {
             asm_resta(n1, n2);
         }
         else
         {
             asm_suma(n1, n2);
-        }        
+        }
     }
-
 
     return 0;
 }
