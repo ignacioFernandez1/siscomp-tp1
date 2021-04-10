@@ -6,14 +6,15 @@ global asm_suma, asm_resta
 
 segment .text
 
-%define dest [ebp + 8]
-%define src  [ebp + 12]
+%define num1 [ebp + 8]
+%define num2  [ebp + 12]
 
 asm_suma:
     enter   0,0 ; ni idea para que es --- creo que es para hacer espacio en la pila pero no nos hace falta
 
-    add dest, src
-    mov eax, [dest] ; Vi en algunos codigos que le pasa el resultado asi para imprimirlo pero no entiendo porque no es directamente dest
+    mov eax, 0
+    add eax, num1
+    add eax, num2
     call print_int  ; esto imprime lo que hay en eax
     call print_nl   ; salto de linea
 
