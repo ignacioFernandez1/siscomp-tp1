@@ -11,6 +11,8 @@ int main(int argc, char *argv[])
 {
     char *num1, *num2;
     long n1, n2;
+    int flagb = 0;
+    int flag_resta = 0;
     if (argc != 4)
     {
         fprintf(stderr, "Usage: %s number +/- number (number puede ser decimal o binario)", argv[0]);
@@ -23,6 +25,7 @@ int main(int argc, char *argv[])
             fprintf(stderr, "Usage: %s number +/- number (number puede ser decimal o binario)", argv[0]);
             exit(EXIT_FAILURE);
         }
+        else flag_resta = 1;
     }
 
     if (argv[1][0] == 'b')
@@ -33,6 +36,7 @@ int main(int argc, char *argv[])
             printf("Error: invalid binary number\n"); // con perror te printea cualquier cosa
             exit(EXIT_FAILURE);
         }
+        flagb = 1;
     }
     else
     {
@@ -63,9 +67,29 @@ int main(int argc, char *argv[])
         }
     }
 
-    printf("n1 = %ld n2 = %ld\n", n1, n2);
+    if (flagb)
+    {
+        if(flag_resta)
+        {
+            asm_b_resta(n1, n2);
+        }
+        else
+        {
+            asm_b_suma(n1, n2);
+        }
+    }
+    else
+    {
+        if(flag_resta)
+        {
+            asm_resta(n1, n2);
+        }
+        else
+        {
+            asm_suma(n1, n2);
+        }        
+    }
 
-    asm_suma(n1, n2);
 
     return 0;
 }

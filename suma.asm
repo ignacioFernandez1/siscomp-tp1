@@ -12,8 +12,7 @@ segment .text
 asm_suma:
     enter   0,0 ; ni idea para que es --- creo que es para hacer espacio en la pila pero no nos hace falta
 
-    mov eax, 0
-    add eax, num1
+    mov eax, num1
     add eax, num2
     call print_int  ; esto imprime lo que hay en eax
     call print_nl   ; salto de linea
