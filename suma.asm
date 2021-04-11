@@ -1,6 +1,6 @@
 
 
-global asm_suma, asm_resta
+global asm_suma
 
 %include "asm_io.inc"
 

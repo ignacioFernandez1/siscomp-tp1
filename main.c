@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
     {
         if (flag_resta)
         {
-            //asm_b_resta(n1, n2);
+            asm_b_resta(n1, n2);
         }
         else
         {
