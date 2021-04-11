@@ -20,24 +20,23 @@ asm_b_resta:
     mov eax, num1
     sub eax, num2
 
-    mov ecx, 32
+    mov ecx, 32 ; tamaño maximo de caracteres para el binario que se imprime
     mov ebx, eax
-    mov eax, binary
-    call print_string
+    mov eax, binary 
+    call print_string ; print '0b'
 conversion:
-    xor eax,eax
-    shl ebx, 1     
-    jc  bit1
-    cmp edi, 0
+    xor eax,eax ; eax = 0
+    shl ebx, 1  ; ebx << 1
+    jc  bit1    ; si el bit es 1, se pasa a la label bit1
+    cmp edi, 0  ; edi se usa de flag, para no imprimir los ceros a la izquierda del primer uno
     je  skip
-    mov eax,0
-    call print_int
+    mov eax,0   ; eax = 0
+    call print_int ; print 0
     jmp skip
 bit1:
-    mov edx, 1
     inc edi
     mov eax,1
-    call print_int
+    call print_int ; print 1
 skip:
     loop conversion
 

@@ -19,5 +19,3 @@ asm_resta:
 
     leave
     ret
-    
-
