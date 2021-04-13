@@ -7,6 +7,7 @@ global asm_b_resta
 segment .data
 
 binary db "0b", 0
+signo db "-", 0
 
 segment .text
 
@@ -17,11 +18,13 @@ asm_b_resta:
     enter   0,0 
     
     xor edi, edi ; edi se usa como flag (set a 0)
-    mov eax, num1
-    sub eax, num2
+    xor edx, edx ; edx se usa como flag (set a 0)
+    mov ebx, num1
+    sub ebx, num2
+    js complemento_2
 
+imprimir:
     mov ecx, 32 ; tamaño maximo de caracteres para el binario que se imprime
-    mov ebx, eax
     mov eax, binary 
     call print_string ; print '0b'
 conversion:
@@ -44,3 +47,9 @@ skip:
     leave
     ret
     
+complemento_2:
+    xor ebx, 0xFFFFFFFF ; invertir todos los bits
+    inc ebx
+    mov eax, signo
+    call print_string
+    jmp imprimir
