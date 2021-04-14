@@ -25,4 +25,12 @@ assert_equals "$response" 2
 
 #testing resta binaria simple
 response=$(./calc b110 - b10)
-assert_equals "$response" "0b100" 
+assert_equals "$response" "0b100"
+
+#testing resta binaria valor negativo
+response=$(./calc b101 - b111)
+assert_equals "$response" "-0b10"
+
+#testng resta entera valor negativo
+response=$(./calc 5 - 18)
+assert_equals "$response" -13
