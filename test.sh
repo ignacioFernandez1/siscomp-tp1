@@ -11,26 +11,26 @@ assert_equals () {
   fi
 }
 
-# testing suma entera simple
+echo testing suma entera simple
 response=$(./calc 2 + 2)
 assert_equals "$response" 4
 
-#testing suma binaria simple
+echo testing suma binaria simple
 response=$(./calc b01 + b01)
 assert_equals "$response" "0b10"
 
-#testing resta entera simple
+echo testing resta entera simple
 response=$(./calc 5 - 3)
 assert_equals "$response" 2
 
-#testing resta binaria simple
+echo testing resta binaria simple
 response=$(./calc b110 - b10)
 assert_equals "$response" "0b100"
 
-#testing resta binaria valor negativo
+echo testing resta binaria valor negativo
 response=$(./calc b101 - b111)
 assert_equals "$response" "-0b10"
 
-#testng resta entera valor negativo
+echo testing resta entera valor negativo
 response=$(./calc 5 - 18)
 assert_equals "$response" -13
